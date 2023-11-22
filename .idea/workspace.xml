@@ -5,8 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2476deb2-350a-416b-a96f-873d081083e8" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/dev/toastcie/lightout/Constants.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/dev/toastcie/lightout/game/Game.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/dev/toastcie/lightout/players/PlayerObject.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/dev/toastcie/lightout/tools/Vector2Int.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dev/toastcie/lightout/MyFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dev/toastcie/lightout/MyFrame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dev/toastcie/lightout/panels/GamePanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dev/toastcie/lightout/panels/GamePanel.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -16,6 +22,7 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="Kotlin Class" />
         <option value="Class" />
       </list>
     </option>
@@ -39,13 +46,9 @@
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
-  <component name="MavenImportPreferences">
-    <option name="importingSettings">
-      <MavenImportingSettings>
-        <option name="workspaceImportEnabled" value="true" />
-      </MavenImportingSettings>
-    </option>
-  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 2
+}</component>
   <component name="ProjectId" id="2YM8aHsK0lLcxsFMYtOm3LEG1dP" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
@@ -57,7 +60,9 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "last_opened_file_path": "C:/Users/maxim/.m2/settings.xml"
+    "git-widget-placeholder": "master",
+    "last_opened_file_path": "C:/Users/maxim/.m2/settings.xml",
+    "settings.editor.selected.configurable": "preferences.lookFeel"
   }
 }]]></component>
   <component name="RunManager">
