@@ -4,6 +4,8 @@ import dev.toastcie.lightout.panels.GamePanel;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 
 public class MyFrame extends JFrame {
 
@@ -18,11 +20,29 @@ public class MyFrame extends JFrame {
         this.setContentPane(gamePanel);
         this.pack();
 
-        //mainLoop();
+        this.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyPressed(KeyEvent e) {
+                super.keyPressed(e);
+                gamePanel.player.keyPressed(e);
+                gamePanel.repaint();
+            }
+
+            @Override
+            public void keyReleased(KeyEvent e) {
+                super.keyReleased(e);
+                gamePanel.player.keyReleased(e);
+                gamePanel.repaint();
+            }
+        });
+
+        mainLoop();
     }
 
     public void mainLoop(){
-        gamePanel.gameLoop();
+        while(true) {
+            gamePanel.gameLoop();
+        }
     }
     public static void main(String[] args) {
         new MyFrame();

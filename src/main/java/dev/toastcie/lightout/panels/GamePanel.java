@@ -2,9 +2,16 @@ package dev.toastcie.lightout.panels;
 
 import dev.toastcie.lightout.Constants;
 import dev.toastcie.lightout.game.Game;
+import dev.toastcie.lightout.players.HumanClick;
+import dev.toastcie.lightout.players.HumanCursor;
+import dev.toastcie.lightout.players.PlayerObject;
+import dev.toastcie.lightout.players.PlayerTemplate;
+import dev.toastcie.lightout.tools.Vector2Int;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
@@ -13,6 +20,8 @@ public class GamePanel extends JPanel {
     public Game game;
     int tileWidth = Constants.SCREEN_WIDTH/Constants.ARRAY_WIDTH;
     int tileHeight = Constants.SCREEN_HEIGHT/Constants.ARRAY_HEIGHT;
+    public PlayerObject player = PlayerTemplate.classicCursor;
+
     public GamePanel(){
         game = new Game(Constants.ARRAY_WIDTH,Constants.ARRAY_HEIGHT);
         game.start(100);
@@ -25,16 +34,11 @@ public class GamePanel extends JPanel {
                 int x = e.getX()/tileWidth;
                 int y = e.getY()/tileHeight;
 
-                game.play(x,y);
-
-                if(game.isWin()){
-                    game.reset();
-                    game.start(100);
-                }
-
-                repaint();
+                player.mouseClicked(new Vector2Int(x,y));
             }
         });
+
+
     }
 
     @Override
@@ -57,6 +61,8 @@ public class GamePanel extends JPanel {
                 g.fillRoundRect(i*tileWidth+Constants.TILE_OFFSET,j*tileHeight+Constants.TILE_OFFSET,tileWidth-Constants.TILE_OFFSET*2,tileHeight-Constants.TILE_OFFSET*2,Constants.BORDER_RADIUS,Constants.BORDER_RADIUS);
             }
         }
+
+        player.addGraphics(g);
     }
 
     @Override
@@ -65,6 +71,24 @@ public class GamePanel extends JPanel {
     }
 
     public void gameLoop(){
+        //repaint();
+        Vector2Int cPos = player.getTouchPos();
+
+        if(cPos.x != -1){
+            game.play(cPos.x,cPos.y);
+
+            if(game.isWin()){
+                game.reset();
+                game.start(100);
+            }
+        }
+
         repaint();
+
+        try {
+            Thread.sleep(10);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 }
