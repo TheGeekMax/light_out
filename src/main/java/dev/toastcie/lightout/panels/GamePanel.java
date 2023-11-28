@@ -1,17 +1,14 @@
 package dev.toastcie.lightout.panels;
 
 import dev.toastcie.lightout.Constants;
+import dev.toastcie.lightout.animation.GameAnimation;
 import dev.toastcie.lightout.game.Game;
-import dev.toastcie.lightout.players.HumanClick;
-import dev.toastcie.lightout.players.HumanCursor;
 import dev.toastcie.lightout.players.PlayerObject;
 import dev.toastcie.lightout.players.PlayerTemplate;
 import dev.toastcie.lightout.tools.Vector2Int;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.KeyAdapter;
-import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
@@ -22,7 +19,11 @@ public class GamePanel extends JPanel {
     int tileHeight = Constants.SCREEN_HEIGHT/Constants.ARRAY_HEIGHT;
     public PlayerObject player = PlayerTemplate.classicCursor;
 
+    //pour les animations
+    private GameAnimation animPlateau;
+
     public GamePanel(){
+        animPlateau = new GameAnimation(Constants.ARRAY_WIDTH,Constants.ARRAY_HEIGHT);
         game = new Game(Constants.ARRAY_WIDTH,Constants.ARRAY_HEIGHT);
         game.start(100);
         this.setFocusable(true);
@@ -62,6 +63,23 @@ public class GamePanel extends JPanel {
             }
         }
 
+        //pour l'animation
+        for(int i = 0; i < Constants.ARRAY_WIDTH;i ++){
+            for(int j = 0; j < Constants.ARRAY_HEIGHT;j ++){
+                if(animPlateau.isInAnimation(i,j)) {
+                    if (game.getelt(i, j)) {
+                        g.setColor(Constants.TILE_OFF);
+                    } else {
+                        g.setColor(Constants.TILE_ON);
+                    }
+                    int wi_offset = (int) GameAnimation.lerp(animPlateau.getStep(i,j),0,GameAnimation.MAX_STEP,Constants.TILE_OFFSET, (double) Constants.SCREEN_WIDTH /(Constants.ARRAY_WIDTH*2));
+                    int he_offset = (int) GameAnimation.lerp(animPlateau.getStep(i,j),0,GameAnimation.MAX_STEP,Constants.TILE_OFFSET, (double) Constants.SCREEN_HEIGHT /(Constants.ARRAY_HEIGHT*2));
+                    g.fillRoundRect(i * tileWidth + wi_offset, j * tileHeight + he_offset, tileWidth - wi_offset * 2, tileHeight - he_offset * 2, Constants.BORDER_RADIUS, Constants.BORDER_RADIUS);
+                }
+            }
+        }
+        animPlateau.step();
+
         player.addGraphics(g);
     }
 
@@ -76,6 +94,7 @@ public class GamePanel extends JPanel {
 
         if(cPos.x != -1){
             game.play(cPos.x,cPos.y);
+            animPlateau.play(cPos.x,cPos.y);
 
             if(game.isWin()){
                 game.reset();
