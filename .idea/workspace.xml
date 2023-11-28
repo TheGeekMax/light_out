@@ -4,10 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2476deb2-350a-416b-a96f-873d081083e8" name="Changes" comment="functional 2.0.0&#10;&#10;add cursor version&#10;&#10;add template object where you can put all user type">
-      <change afterPath="$PROJECT_DIR$/src/main/java/dev/toastcie/lightout/animation/GameAnimation.java" afterDir="false" />
+    <list default="true" id="2476deb2-350a-416b-a96f-873d081083e8" name="Changes" comment="3.0.0 - animations&#10;&#10;add animation when you play">
+      <change afterPath="$PROJECT_DIR$/src/main/java/dev/toastcie/lightout/players/AiAlgorithm.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dev/toastcie/lightout/MyFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dev/toastcie/lightout/MyFrame.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/dev/toastcie/lightout/panels/GamePanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dev/toastcie/lightout/panels/GamePanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dev/toastcie/lightout/players/HumanClick.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dev/toastcie/lightout/players/HumanClick.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dev/toastcie/lightout/players/HumanCursor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dev/toastcie/lightout/players/HumanCursor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dev/toastcie/lightout/players/PlayerObject.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dev/toastcie/lightout/players/PlayerObject.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dev/toastcie/lightout/players/PlayerTemplate.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dev/toastcie/lightout/players/PlayerTemplate.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -114,7 +119,15 @@
       <option name="project" value="LOCAL" />
       <updated>1701163530404</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="3.0.0 - animations&#10;&#10;add animation when you play">
+      <option name="closed" value="true" />
+      <created>1701167553404</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1701167553404</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -122,6 +135,7 @@
     <MESSAGE value="Add main frame" />
     <MESSAGE value="functional 1.0.0&#10;&#10;using only mouse click&#10;+ begining of Player Class" />
     <MESSAGE value="functional 2.0.0&#10;&#10;add cursor version&#10;&#10;add template object where you can put all user type" />
-    <option name="LAST_COMMIT_MESSAGE" value="functional 2.0.0&#10;&#10;add cursor version&#10;&#10;add template object where you can put all user type" />
+    <MESSAGE value="3.0.0 - animations&#10;&#10;add animation when you play" />
+    <option name="LAST_COMMIT_MESSAGE" value="3.0.0 - animations&#10;&#10;add animation when you play" />
   </component>
 </project>

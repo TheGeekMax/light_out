@@ -17,7 +17,7 @@ public class GamePanel extends JPanel {
     public Game game;
     int tileWidth = Constants.SCREEN_WIDTH/Constants.ARRAY_WIDTH;
     int tileHeight = Constants.SCREEN_HEIGHT/Constants.ARRAY_HEIGHT;
-    public PlayerObject player = PlayerTemplate.classicCursor;
+    public PlayerObject player = PlayerTemplate.classicAiAlgorithm;
 
     //pour les animations
     private GameAnimation animPlateau;
@@ -90,7 +90,7 @@ public class GamePanel extends JPanel {
 
     public void gameLoop(){
         //repaint();
-        Vector2Int cPos = player.getTouchPos();
+        Vector2Int cPos = player.getTouchPos(game);
 
         if(cPos.x != -1){
             game.play(cPos.x,cPos.y);
@@ -98,6 +98,7 @@ public class GamePanel extends JPanel {
 
             if(game.isWin()){
                 game.reset();
+                player.reset();
                 game.start(100);
             }
         }

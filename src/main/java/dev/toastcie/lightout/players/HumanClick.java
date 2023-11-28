@@ -1,5 +1,6 @@
 package dev.toastcie.lightout.players;
 
+import dev.toastcie.lightout.game.Game;
 import dev.toastcie.lightout.tools.Vector2Int;
 
 import java.awt.*;
@@ -24,7 +25,7 @@ public class HumanClick extends PlayerObject{
     }
 
     @Override
-    public Vector2Int getTouchPos() {
+    public Vector2Int getTouchPos(Game instance) {
         for(int i = 0 ; i < width; i ++){
             for(int j = 0 ; j < height; j ++){
                 if(clickGrid[i][j]){
@@ -44,4 +45,7 @@ public class HumanClick extends PlayerObject{
 
     @Override
     public void addGraphics(Graphics g) {}
+
+    @Override
+    public void reset() {}
 }

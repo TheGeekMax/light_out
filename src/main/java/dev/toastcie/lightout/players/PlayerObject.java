@@ -1,5 +1,6 @@
 package dev.toastcie.lightout.players;
 
+import dev.toastcie.lightout.game.Game;
 import dev.toastcie.lightout.tools.*;
 
 import java.awt.*;
@@ -16,7 +17,9 @@ public abstract class PlayerObject {
     abstract public void mouseClicked(Vector2Int pos);
     abstract public void keyPressed(KeyEvent e);
     abstract public void keyReleased(KeyEvent e);
-    abstract public Vector2Int getTouchPos();
+    abstract public Vector2Int getTouchPos(Game instance);
+
+    abstract public void reset();
 
     abstract public void addGraphics(Graphics g);
 }

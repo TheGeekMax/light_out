@@ -1,6 +1,7 @@
 package dev.toastcie.lightout.players;
 
 import dev.toastcie.lightout.Constants;
+import dev.toastcie.lightout.game.Game;
 import dev.toastcie.lightout.tools.KeyMovement;
 import dev.toastcie.lightout.tools.Vector2Int;
 
@@ -39,7 +40,7 @@ public class HumanCursor extends PlayerObject{
     }
 
     @Override
-    public Vector2Int getTouchPos() {
+    public Vector2Int getTouchPos(Game instance) {
         if(keymap.isEnterPressed()){
             return new Vector2Int(x,y);
         }
@@ -54,5 +55,11 @@ public class HumanCursor extends PlayerObject{
         int wid = Constants.SCREEN_WIDTH/Constants.ARRAY_WIDTH;
         int hei = Constants.SCREEN_HEIGHT/Constants.ARRAY_HEIGHT;
         g2d.drawRoundRect(x*wid,y*hei,wid,hei,Constants.BORDER_RADIUS,Constants.BORDER_RADIUS);
+    }
+
+    @Override
+    public void reset() {
+        x = 0;
+        y = 0;
     }
 }

@@ -24,15 +24,14 @@ public class MyFrame extends JFrame {
             @Override
             public void keyPressed(KeyEvent e) {
                 super.keyPressed(e);
+                System.out.println("enculé");
                 gamePanel.player.keyPressed(e);
-                gamePanel.repaint();
             }
 
             @Override
             public void keyReleased(KeyEvent e) {
                 super.keyReleased(e);
                 gamePanel.player.keyReleased(e);
-                gamePanel.repaint();
             }
         });
 
