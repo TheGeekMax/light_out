@@ -1,5 +1,6 @@
 package dev.toastcie.lightout.players;
 
+import dev.toastcie.lightout.Constants;
 import dev.toastcie.lightout.game.Game;
 import dev.toastcie.lightout.tools.Vector2Int;
 
@@ -11,6 +12,8 @@ public class AiAlgorithm extends PlayerObject{
 
     ArrayList<Vector2Int> queuePlay;
 
+    Vector2Int lastPlay;
+
     boolean state = true; //false -> falling down, true -> addon
     int currentHeight = 0;
 
@@ -18,6 +21,7 @@ public class AiAlgorithm extends PlayerObject{
     public AiAlgorithm(int width, int height) {
         super(width, height);
         queuePlay = new ArrayList<>();
+        lastPlay = new Vector2Int(-1,-1);
     }
 
     @Override
@@ -32,7 +36,7 @@ public class AiAlgorithm extends PlayerObject{
     @Override
     public Vector2Int getTouchPos(Game instance) {
         //on verif que c'est une bonne frame
-        if(currentFrame++ < 20){
+        if(currentFrame++ < 30){
             return new Vector2Int(-1,-1);
         }
         currentFrame = 0;
@@ -57,8 +61,9 @@ public class AiAlgorithm extends PlayerObject{
         if(queuePlay.isEmpty()){
             return new Vector2Int(-1,-1);
         }
+        lastPlay = queuePlay.remove(0);
 
-        return queuePlay.remove(0);
+        return lastPlay;
     }
 
     private void calculateFalling(Game instance){
@@ -110,6 +115,17 @@ public class AiAlgorithm extends PlayerObject{
 
     @Override
     public void addGraphics(Graphics g) {
+        if(lastPlay.x == -1) return;
 
+        Graphics2D g2d = (Graphics2D) g;
+
+        //on imprime le coup
+
+        int wi = Constants.SCREEN_WIDTH/Constants.ARRAY_WIDTH;
+        int he = Constants.SCREEN_HEIGHT/Constants.ARRAY_HEIGHT;
+
+        g2d.setStroke(new BasicStroke(5));
+        g2d.setColor(Color.decode("#751522"));
+        g2d.drawRoundRect(lastPlay.x*wi, lastPlay.y*he,wi,he,Constants.BORDER_RADIUS,Constants.BORDER_RADIUS);
     }
 }

@@ -17,7 +17,7 @@ public class GamePanel extends JPanel {
     public Game game;
     int tileWidth = Constants.SCREEN_WIDTH/Constants.ARRAY_WIDTH;
     int tileHeight = Constants.SCREEN_HEIGHT/Constants.ARRAY_HEIGHT;
-    public PlayerObject player = PlayerTemplate.classicAiAlgorithm;
+    public PlayerObject player = PlayerTemplate.classicAiBackTracking;
 
     //pour les animations
     private GameAnimation animPlateau;
@@ -25,7 +25,7 @@ public class GamePanel extends JPanel {
     public GamePanel(){
         animPlateau = new GameAnimation(Constants.ARRAY_WIDTH,Constants.ARRAY_HEIGHT);
         game = new Game(Constants.ARRAY_WIDTH,Constants.ARRAY_HEIGHT);
-        game.start(100);
+        game.start(Constants.RANDOM_SIZE);
         this.setFocusable(true);
 
         this.addMouseListener(new MouseAdapter() {
@@ -68,13 +68,22 @@ public class GamePanel extends JPanel {
             for(int j = 0; j < Constants.ARRAY_HEIGHT;j ++){
                 if(animPlateau.isInAnimation(i,j)) {
                     if (game.getelt(i, j)) {
+                        //on affiche la tile allumé
                         g.setColor(Constants.TILE_OFF);
+                        g.fillRoundRect(i*tileWidth+Constants.TILE_OFFSET,j*tileHeight+Constants.TILE_OFFSET,tileWidth-Constants.TILE_OFFSET*2,tileHeight-Constants.TILE_OFFSET*2,Constants.BORDER_RADIUS,Constants.BORDER_RADIUS);
+
+                        g.setColor(Constants.TILE_ON);
+
+                        int wi_offset = (int) GameAnimation.lerp(animPlateau.getStep(i,j),0,GameAnimation.MAX_STEP, (double) Constants.SCREEN_WIDTH /(Constants.ARRAY_WIDTH*2),Constants.TILE_OFFSET);
+                        int he_offset = (int) GameAnimation.lerp(animPlateau.getStep(i,j),0,GameAnimation.MAX_STEP, (double) Constants.SCREEN_HEIGHT /(Constants.ARRAY_HEIGHT*2),Constants.TILE_OFFSET);
+                        g.fillRoundRect(i * tileWidth + wi_offset, j * tileHeight + he_offset, tileWidth - wi_offset * 2, tileHeight - he_offset * 2, Constants.BORDER_RADIUS, Constants.BORDER_RADIUS);
                     } else {
                         g.setColor(Constants.TILE_ON);
+
+                        int wi_offset = (int) GameAnimation.lerp(animPlateau.getStep(i,j),0,GameAnimation.MAX_STEP,Constants.TILE_OFFSET, (double) Constants.SCREEN_WIDTH /(Constants.ARRAY_WIDTH*2));
+                        int he_offset = (int) GameAnimation.lerp(animPlateau.getStep(i,j),0,GameAnimation.MAX_STEP,Constants.TILE_OFFSET, (double) Constants.SCREEN_HEIGHT /(Constants.ARRAY_HEIGHT*2));
+                        g.fillRoundRect(i * tileWidth + wi_offset, j * tileHeight + he_offset, tileWidth - wi_offset * 2, tileHeight - he_offset * 2, Constants.BORDER_RADIUS, Constants.BORDER_RADIUS);
                     }
-                    int wi_offset = (int) GameAnimation.lerp(animPlateau.getStep(i,j),0,GameAnimation.MAX_STEP,Constants.TILE_OFFSET, (double) Constants.SCREEN_WIDTH /(Constants.ARRAY_WIDTH*2));
-                    int he_offset = (int) GameAnimation.lerp(animPlateau.getStep(i,j),0,GameAnimation.MAX_STEP,Constants.TILE_OFFSET, (double) Constants.SCREEN_HEIGHT /(Constants.ARRAY_HEIGHT*2));
-                    g.fillRoundRect(i * tileWidth + wi_offset, j * tileHeight + he_offset, tileWidth - wi_offset * 2, tileHeight - he_offset * 2, Constants.BORDER_RADIUS, Constants.BORDER_RADIUS);
                 }
             }
         }
@@ -99,7 +108,7 @@ public class GamePanel extends JPanel {
             if(game.isWin()){
                 game.reset();
                 player.reset();
-                game.start(100);
+                game.start(Constants.RANDOM_SIZE);
             }
         }
 

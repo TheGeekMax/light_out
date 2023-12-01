@@ -13,6 +13,8 @@ public class Constants {
     public static final int ARRAY_WIDTH = 5;
     public static final int ARRAY_HEIGHT = 5;
 
+    public static final int RANDOM_SIZE = 4;
+
     public static final Color TILE_OFF = Color.decode("#242c47");
     public static final Color TILE_ON = Color.decode("#8495d1");
     public static final Color BACKGROUND_COLOR = Color.decode("#08102b");

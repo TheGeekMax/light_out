@@ -58,4 +58,14 @@ public class Game{
     public boolean getelt(int x, int y) {
         return tiles[x][y];
     }
+
+    public int[][] getArray(){
+        int[][] array = new int[width][height];
+        for(int i = 0; i < width; i ++){
+            for(int j = 0; j < height; j ++){
+                array[i][j] = (tiles[i][j])?1:0;
+            }
+        }
+        return array;
+    }
 }

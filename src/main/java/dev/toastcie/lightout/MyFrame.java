@@ -24,7 +24,6 @@ public class MyFrame extends JFrame {
             @Override
             public void keyPressed(KeyEvent e) {
                 super.keyPressed(e);
-                System.out.println("enculé");
                 gamePanel.player.keyPressed(e);
             }
 
